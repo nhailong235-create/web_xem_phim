@@ -1,0 +1,1030 @@
+body {
+     background: linear-gradient(to bottom, #050014, #02000a);
+}
+ 
+ 
+ 
+/* NAVBAR */
+.navbar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+
+    background: rgb(0, 0, 0);
+    backdrop-filter: blur(10px);
+} 
+
+.movie-track{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+
+    overflow-x: auto;
+    overflow-y: hidden; 
+
+    scrollbar-width: none;
+}
+
+
+.nav-link:hover {
+     color: #a855f7 !important;
+}
+ 
+.text-purple {
+ 
+     color: #a855f7;
+ 
+}
+ 
+.form-control {
+ 
+     border-color: #a855f7;
+     box-shadow: 0 0 8px #a855f7;
+ 
+     border-radius: 50px;
+     background: white;
+     color: white;
+ 
+ 
+ 
+}
+ 
+/* ICON */
+.icon-btn {
+ 
+     border: none;
+     background: transparent;
+     color: white;
+     cursor: pointer;
+ 
+}
+ 
+ 
+ 
+.icon-btn:active {
+ 
+     transform: scale(0.9);
+     opacity: 0.7;
+}
+ 
+ 
+/* BANNER */
+ 
+ 
+ 
+.banner {
+ 
+     position: relative;
+     height: 600px;
+     overflow: hidden;
+ 
+}
+ 
+/* intro image */
+ 
+.banner img {
+ 
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     object-position: relative;
+}
+ 
+/* overlay */
+ 
+.banner::after {
+ 
+     content: "";
+     position: absolute;
+     inset: 0;
+     background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2));
+}
+ 
+/* CONTENT */
+ 
+.banner-content {
+ 
+     position: absolute;
+     top: 30%;
+     left: 60px;
+     max-width: 600px;
+     z-index: 2;
+}
+ 
+ 
+.banner h1 {
+     font-size: 60px;
+     font-weight: bold;
+}
+ 
+ 
+/* BUTTON */
+ 
+.btn-purple {
+     background: #a855f7;
+     color: white;
+     border-radius: 50px;
+}
+ 
+ 
+.btn-purple:hover {
+     background: #9333ea;
+}
+ 
+.btn-outline-light {
+     background: #a855f7;
+     color: white;
+     border-radius: 50px;
+     border: none;
+     outline: none;
+}
+ 
+.btn-outline-light:hover {
+     background: #9333ea;
+     color: white !important;
+     
+}
+ 
+ 
+/* SPACE BACKGROUND */
+ 
+.space-bg {
+ 
+     position: absolute;
+     inset: 0;
+ 
+     background:
+ 
+          radial-gradient(circle at 20% 30%, rgba(168, 85, 247, 0.4), transparent 40%),
+ 
+          radial-gradient(circle at 80% 70%, rgba(147, 51, 234, 0.4), transparent 40%),
+ 
+          radial-gradient(circle at 50% 50%, rgba(76, 29, 149, 0.6), #050014 70%);
+ 
+     z-index: 0;
+ 
+}
+ 
+.space-bg::after {
+ 
+     content: "";
+     position: absolute;
+     inset: 0;
+     background-image: radial-gradient(white 1px, transparent 1px);
+     background-size: 3px 3px;
+     opacity: 0.2;
+}
+ 
+ 
+/* BLEND IMAGE */
+ 
+ 
+ 
+.banner-img-blend {
+ 
+     position: absolute;
+     right: 0;
+     bottom: 0;
+     max-height: 100%;
+     opacity: 0.8;
+     mix-blend-mode: screen;
+     z-index: 1;
+ 
+}
+ 
+/* SLIDE BUTTON */
+.slide-btn {
+     position: absolute;
+     top: 50%;
+     transform: translateY(-50%);
+     background: rgba(76, 92, 175, 0.5);
+     border: none;
+     color: white;
+     padding: 10px;
+     cursor: pointer;
+     z-index: 2;
+     border-radius: 50%;
+}
+ 
+.slide-btn.left {
+     left: 20px;
+}
+ 
+.slide-btn.right {
+     right: 20px;
+}
+ 
+.slide-btn:hover {
+ 
+     background: #a855f7;
+}
+ 
+/* CARD */
+ 
+/* Container bao ngoài để ẩn thanh cuộn nhưng vẫn cho phép cuộn */
+.movie-wrapper {
+     position: relative;
+     display: flex;
+     align-items: center;
+}
+
+/* Danh sách phim trên 1 hàng */
+#movie-list-PhimNoiBat,
+#movie-list-PhimTruyenHinh {
+     display: flex;
+     flex-wrap: nowrap; /* Không cho phép xuống dòng */
+     overflow-x: auto;  /* Cho phép cuộn ngang */
+     scroll-behavior: smooth; /* Hiệu ứng cuộn mượt */
+     gap: 20px;
+     padding: 20px 0;
+}
+ 
+/* Container bao ngoài để định vị nút */
+.carousel-wrapper {
+    position: relative; /* Gốc tọa độ cho các nút absolute */
+    display: flex;
+    align-items: center;
+}
+ 
+/* Tùy chỉnh chung cho nút bấm */
+.btn-scroll {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* Căn giữa theo chiều dọc */
+    z-index: 10; /* Luôn nằm trên cùng */
+    background: rgba(76, 92, 175, 0.5);; 
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ 
+.btn-scroll:hover {
+    background: #a855f7;
+    transform: translateY(-50%) scale(1.1);
+}
+ 
+/* Vị trí nút trái */
+.btn-scroll.left {
+    left: -20px; /* Đẩy ra lề trái một chút */
+}
+ 
+/* Vị trí nút phải */
+.btn-scroll.right {
+    right: -20px; /* Đẩy ra lề phải một chút */
+}
+ 
+/* Đảm bảo danh sách phim không bị nút che mất quá nhiều */
+.movie-carousel {
+    width: 100%;
+    overflow: hidden;
+}
+ 
+.movie-track {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px 0;
+    scrollbar-width: none;
+}
+ 
+.movie-track::-webkit-scrollbar {
+    display: none;
+}
+ 
+#movie-list-PhimNoiBat::-webkit-scrollbar,
+#movie-list-PhimTruyenHinh::-webkit-scrollbar {
+     display: none;
+}
+ 
+/* Điều chỉnh lại movie-card để không bị co lại */
+.movie-card {
+     flex: 0 0 auto; /* Không cho phép card bị nén lại */
+     width: 300px;
+     height: 400px;
+     margin: 20;
+     background: #0b0620;
+     padding: 10px;
+     border-radius: 10px;
+     transition: 0.3s;
+}
+.movie-card img {
+     height: 100%;
+     width: 100%;
+     border-radius: 10px;
+     object-fit: cover;
+}
+ 
+.movie-card:hover {
+ 
+     transform: scale(1.05);
+     box-shadow: 0 0 15px #a855f7;
+}
+ 
+body {
+ 
+     background: #090b1a;
+     color: white;
+     font-family: Arial, Helvetica, sans-serif;
+ 
+}
+ 
+/* TITLE */
+ 
+.section-title {
+ 
+     font-size: 40px;
+     font-weight: 700;
+}
+ 
+/* CARD */
+ 
+.topic-card {
+     position: relative;
+     display: flex;
+     flex-direction: column;
+     justify-content: flex-end;
+     height: 150px;
+     padding: 24px;
+     border-radius: 20px;
+     overflow: hidden;
+     text-decoration: none;
+     color: white;
+     transition: 0.35s;
+ 
+}
+ 
+/* blur light */
+ 
+.topic-card::before {
+ 
+     content: "";
+ 
+     position: absolute;
+ 
+     inset: 0;
+     background:
+ 
+          radial-gradient(circle at top right,
+ 
+               rgba(255, 255, 255, 0.18),
+ 
+               transparent 45%);
+     pointer-events: none;
+ 
+}
+ 
+/* hover */
+ 
+.topic-card:hover {
+ 
+     transform: translateY(-6px);
+ 
+     color: white;
+ 
+}
+ 
+/* title */
+ 
+.topic-card h3 {
+ 
+     font-size: 38px;
+ 
+     font-weight: 700;
+ 
+     margin-bottom: 10px;
+ 
+     position: relative;
+ 
+     z-index: 2;
+ 
+}
+ 
+ 
+/* text */
+ 
+.topic-card span {
+ 
+     font-size: 18px;
+ 
+     font-weight: 600;
+     display: flex;
+ 
+     align-items: center;
+ 
+     gap: 6px;
+     position: relative;
+ 
+     z-index: 2;
+ 
+}
+ 
+/* COLORS */
+ 
+.red {
+ 
+     background: linear-gradient(135deg, #b30000, #e38c95);
+}
+ 
+.blue {
+ 
+     background: linear-gradient(135deg, #4b5fd1, #d58ca0);
+}
+ 
+.purple {
+     background: linear-gradient(135deg, #8471c7, #e193a1);
+}
+ 
+.orange {
+     background: linear-gradient(135deg, #c98c6d, #e0a8a0);
+}
+ 
+.pink {
+ 
+     background: linear-gradient(135deg, #b34d52, #d89495);
+ 
+}
+ 
+.rose {
+     background: linear-gradient(135deg, #d56d98, #e6a7b9);
+}
+ 
+.banner-anime {
+     width: cover;
+     position: relative;
+     height: 500px;
+     overflow: hidden;
+ 
+}
+.btn-red:hover {
+     background: red;
+}
+ 
+.btn-outline-light-orange {
+     background: orangered;
+     color: white;
+     border-radius: 50px;
+}
+ 
+.btn-outline-light-orange:hover {
+     background: red;
+}
+.btn-red {
+     background:orangered;
+     color: white;
+     border-radius: 50px;
+}
+
+/* intro image */
+ 
+#anime-img {
+ 
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     object-position: relative;
+}
+ 
+/* overlay */
+ 
+.banner-anime::after {
+ 
+     content: "";
+     position: absolute;
+     inset: 0;
+     background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2));
+}
+ 
+/* CONTENT */
+ 
+.anime-content {
+ 
+     position: absolute;
+     top: 30%;
+     left: 60px;
+     max-width: 600px;
+     z-index: 2;
+}
+ 
+ 
+.banner-anime h1 {
+     font-size: 60px;
+     font-weight: bold;
+}
+.slideanime-btn {
+     position: absolute;
+     top: 50%;
+     transform: translateY(-50%);
+     background: rgba(76, 92, 175, 0.5);
+     border: none;
+     color: white;
+     padding: 10px;
+     cursor: pointer;
+     z-index: 2;
+     border-radius: 50%;
+}
+.slideanime-btn.left {
+     left: 20px;
+}
+
+.slideanime-btn.right {
+     right: 20px;
+}
+.banner-anime{
+     margin: 10px;
+}
+/* LIST */
+#movie-list-HanhDong{
+    display:flex;
+    gap:18px;
+    overflow-x:auto;
+    scroll-behavior:smooth;
+    scrollbar-width:none;
+    padding:10px 0;
+}
+
+#movie-list-HanhDong::-webkit-scrollbar{
+    display:none;
+}
+
+/* CARD */
+.action-card{
+    min-width:220px;
+    transition:0.3s;
+    cursor:pointer;
+}
+
+/* IMAGE */
+.action-card img{
+    width:100%;
+    height:130px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+/* INFO */
+.action-info{
+    margin-top:8px;
+}
+
+.action-info h5{
+    font-size:15px;
+    font-weight:600;
+    margin:0;
+    color:white;
+}
+
+.action-info p{
+    font-size:12px;
+    color:#aaa;
+    margin-top:4px;
+
+    display:-webkit-box;
+
+    line-clamp:1;
+    -webkit-line-clamp:1;
+
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+}
+
+/* HOVER */
+.action-card:hover{
+    transform:translateY(-5px);
+}
+.textred{
+    color:#ff3b3b;
+    text-shadow:0 0 10px red;
+}
+.bi-fire{
+    margin-right:8px;
+    font-size:22px;
+}
+.textpink{
+    color:#ff7eb6;
+
+    text-shadow:
+    0 0 5px #ff7eb6,
+    0 0 10px #ff4da6,
+    0 0 20px #ff4da6;
+}
+
+.love-title i{
+    color:#ff4da6;
+    margin-right:8px;
+    font-size:22px;
+
+    text-shadow:
+    0 0 5px #ff4da6,
+    0 0 10px #ff4da6;
+}
+.textred2{
+    color:#a80f0f;
+    text-shadow:0 0 10px red;
+
+}
+.bi-droplet-fill{
+    margin-right:8px;
+    font-size:22px;
+    color:#b30000 !important;
+}
+.textyl{
+    color:#ffe600 !important;
+    text-shadow:
+    0 0 5px #fff176,
+    0 0 10px #ffeb3b,
+    0 0 20px #ffc107,
+    0 0 40px #ff9800,
+
+}
+.textwhite{
+    color:#f9f6f6;
+    text-shadow:0 0 10px rgb(244, 226, 226);
+}
+.textpurple{
+     color: #a855f7;
+     text-shadow: 0 0 10px #bb7ff4 
+}
+.bi-emoji-laughing{
+     color: yellow !important;
+     background-color: black;
+}
+.textred3{
+    color:#afe84c;
+    text-shadow:0 0 10px rgb(27, 227, 237);
+}
+html, body{
+    overflow-x: hidden;
+}
+/* phim nổi bật */
+.textpurple .bi-chevron-right{
+    color:#b56cff;
+}
+
+/* ngôn tình */
+.textpink .bi-chevron-right{
+    color:#ff4da6;
+}
+
+/* anime */
+.textyl .bi-chevron-right{
+    color:#ffd700;
+}
+
+/* hành động */
+.textred .bi-chevron-right{
+    color:red;
+}
+
+/* kinh dị */
+.textred2 .bi-chevron-right{
+    color:#8b0000;
+}
+
+/* hài */
+.textred3 .bi-chevron-right{
+    color:#00e5ff;
+}
+/* User Dropdown */
+.user-dropdown-wrapper {
+    position: relative;
+}
+
+.user-menu {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: 240px;
+    background: #1a1a2e;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 8px;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.2s ease;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.user-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.user-menu-header {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 6px;
+}
+
+.user-menu-header p {
+    margin: 0;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+}
+
+.user-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: rgba(255,255,255,0.85);
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.15s;
+    text-decoration: none;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+}
+
+.user-menu-item:hover {
+    background: rgba(255,255,255,0.07);
+    color: #fff;
+}
+
+.user-menu-item i {
+    font-size: 16px;
+    width: 20px;
+    color: rgba(255,255,255,0.5);
+}
+
+.user-menu-item.login {
+    background: #7c3aed;
+    color: #fff;
+    margin-bottom: 4px;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.user-menu-item.login:hover {
+    background: #6d28d9;
+}
+
+.user-menu-item.login i {
+    color: #fff;
+}
+
+.user-menu-item.register {
+    border: 1px solid rgba(124,58,237,0.5);
+    color: #a78bfa;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.user-menu-item.register:hover {
+    background: rgba(124,58,237,0.1);
+}
+
+.user-menu-item.register i {
+    color: #a78bfa;
+}
+
+.user-menu-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+    margin: 6px 4px;
+}
+
+.icon-btn.active {
+    color: #a78bfa;
+}
+body{
+    overflow: hidden;
+}
+.login-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.7); /* lớp mờ che hết */
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+}
+.login-box{
+    width: 700px;
+    height: 400px;
+    display: flex;
+
+    background: #111;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+.login-banner{
+    width: 50%;
+    background: url("bg2.png") center/cover no-repeat;
+}
+.login-form{
+    width: 50%;
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 10px;
+    color: white;
+}
+.login-form form{
+     display: flex;
+     flex-direction: column;
+     gap: 12px;
+}
+.button-login{
+     border-radius:10px;
+     height: 40px;
+     background-color: plum;
+}
+.nutdonglogin{
+     position: absolute;
+     top: 15px;
+     right: 15px;
+
+     background: none;
+     border: none;
+
+     color: white;
+     font-size: 20px;
+
+     cursor: pointer;
+}
+.register-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.7); /* lớp mờ che hết */
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+}
+.register-box{
+    width: 700px;
+    height: 400px;
+    display: flex;
+
+    background: #111;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+.register-banner{
+    width: 50%;
+    background: url("bg2.png") center/cover no-repeat;
+}
+.register-form{
+    width: 50%;
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 10px;
+    color: white;
+}
+.register-form form{
+     display: flex;
+     flex-direction: column;
+     gap: 12px;
+}
+.button-register{
+     border-radius:10px;
+     height: 40px;
+     background-color: plum;
+}
+.nutdongregister{
+     position: absolute;
+     top: 15px;
+     right: 15px;
+
+     background: none;
+     border: none;
+
+     color: white;
+     font-size: 20px;
+
+     cursor: pointer;
+}
+/* ==========================================================================
+   CẤU HÌNH HỘP TÌM KIẾM ĐỔ XUỐNG (SEARCH DROPDOWN)
+   ========================================================================== */
+
+/* Khung lớn chứa danh sách kết quả */
+.search-results-box {
+    position: absolute;
+    top: 100%; /* Hiển thị ngay sát phía dưới ô input */
+    left: 0;
+    right: 0;
+    background-color: #1a1a2e; /* Màu nền tối trùng tone website */
+    border: 1px solid #301b57; /* Viền màu tím sẫm tinh tế */
+    border-radius: 8px; /* Bo tròn góc */
+    max-height: 400px; /* Chiều cao tối đa, nếu nhiều phim sẽ tự xuất hiện thanh cuộn */
+    overflow-y: auto; /* Bật thanh cuộn dọc khi tràn phim */
+    z-index: 1050; /* Đảm bảo hộp luôn nổi lên trên banner và các thành phần khác */
+    margin-top: 5px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5); /* Đổ bóng tạo chiều sâu */
+    padding: 5px 0;
+}
+
+/* Tùy chỉnh thanh cuộn (scrollbar) bên trong hộp kết quả cho đẹp và thanh thoát */
+.search-results-box::-webkit-scrollbar {
+    width: 6px;
+}
+.search-results-box::-webkit-scrollbar-track {
+    background: #141423;
+}
+.search-results-box::-webkit-scrollbar-thumb {
+    background: #6f42c1; 
+    border-radius: 10px;
+}
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    text-decoration: none; 
+    color: #ffffff; 
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+}
+
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+
+.search-result-item:hover {
+    background-color: rgba(111, 66, 193, 0.2); 
+    color: #bb86fc; 
+}
+
+/* Ảnh poster nhỏ của phim */
+.search-result-item img {
+    width: 40px;
+    height: 55px;
+    object-fit: cover; /* Giúp ảnh không bị méo */
+    border-radius: 4px; /* Bo góc ảnh nhẹ */
+    margin-right: 12px; 
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+
+.search-result-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.search-result-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+
+.search-result-meta {
+    font-size: 12px;
+    color: #a0a0a0; 
+}
+
+.search-no-results {
+    padding: 15px;
+    text-align: center;
+    color: #a0a0a0;
+    font-size: 14px;
+    font-style: italic;
+}

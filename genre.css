@@ -1,0 +1,81 @@
+.genre-container{
+
+     display: flex;
+
+     flex-wrap: wrap;
+
+     gap: 10px;
+}
+
+
+.genre-btn{
+     padding: 12px;
+     border: none;
+     border-radius: 10px;
+
+     color: white;
+     font-weight: bold;
+
+     transition: 0.3s;
+
+     width: 100%;
+     height: 200px;
+
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
+}
+.genre-btn:hover{
+     transform: scale(1.05);
+     filter: brightness(1.2);
+}
+.genre-container{
+
+     display: grid;
+
+     grid-template-columns: repeat(3, 1fr);
+
+     gap: 15px;
+}
+html, body{
+    overflow-x: hidden;
+}
+body{
+    padding-top: 90px;
+}
+#Action{
+     background-image: url("loki.jpg");
+}
+#Sci-Fi{
+     background-image: url("sci-fi.jpg");
+}
+#Horror{
+     background-image: url("kinhdi.jpg");
+}
+#Comedy{
+     background-image: url("johnnyenglish.jpg");
+}
+#Romance{
+     background-image: url("titanic.jpg");
+}
+#Fantasy{
+     background-image: url("harrypotter.jpg");
+}
+#Animation{
+     background-image: url("onepiece.jpg");
+}
+#Crime{
+     background-image: url("joker.jpg");
+}
+#Drama{
+     background-image: url("socialnetwork.jpg");
+}
+#War{
+     background-image: url("hacksaw.jpg");
+}
+#Thriller{
+     background-image: url("mrrobot.jpg");
+}
+#Adventure{
+     background-image: url("lotr.jpg");
+}

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Galaxy Movie</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+     <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="text-white">
+
+     <div class="navbar navbar-expand-lg px-3">
+          <a href="#" class="navbar-brand text-white d-flex align-items-center">
+               <img src="logo.png" width="100" alt="Logo">
+               Galaxy<span class="text-purple">Movie</span>
+          </a>
+          <ul class="navbar-nav">
+               <li class="nav-item"><a href="#" class="nav-link text-white">Trang chủ</a></li>
+               <li class="nav-item"><a href="#" class="nav-link text-white">Phim lẻ</a></li>
+               <li class="nav-item"><a href="#" class="nav-link text-white">Phim bộ</a></li>
+               <li class="nav-item"><a href="genre.html" class="nav-link text-white">Thể loại</a></li>
+               <li class="nav-item"><a href="#" class="nav-link text-white">Top IMDb</a></li>
+          </ul>
+
+          <form class="ms-auto px-2 d-flex align-items-center position-relative" onsubmit="event.preventDefault();">
+               <i class="bi bi-search position-absolute ms-2 text-secondary"></i>
+               <input id="search-input" class="form-control form-control-sm ps-4" type="text" placeholder="Tìm kiếm phim..." autocomplete="off">
+               
+               <div id="search-results-dropdown" class="search-results-box" style="display: none;"></div>
+          </form>
+
+          <button class="icon-btn"><i class="bi bi-bell-fill"></i></button>
+          
+          <div class="user-dropdown-wrapper">
+               <button class="icon-btn ms-2" id="user-btn" onclick="toggleUserMenu()">
+                    <i class="bi bi-person-circle"></i>
+               </button>
+               <div class="user-menu" id="user-menu"></div>
+          </div>
+     </div> 
+
+     <div class="banner">
+          <div id="space-bg" class="space-bg d-none"></div>
+          <img id="banner-img" src="bg.png" alt="Banner">
+          <img id="banner-blend" class="banner-img-blend d-none" alt="Blend">
+          <div class="banner-content">
+               <h1 id="banner-title">Galaxy Movie</h1>
+               <p id="banner-desc"></p>
+               <button class="btn btn-purple">Khám phá</button>
+               <button class="btn btn-outline-light" id="favorite-btn">+ Danh sách</button>
+          </div>
+          <button class="slide-btn left" onclick="prevSlide()"><i class="bi bi-chevron-left"></i></button>
+          <button class="slide-btn right" onclick="nextSlide()"><i class="bi bi-chevron-right"></i></button>
+     </div>
+
+     <div class="topics-section container-fluid py-4 px-3">
+          <h2 class="section-title mb-4"><span class="textwhite">✨ Bạn đang quan tâm gì?</span></h2>
+          <div class="row g-3">
+               <div class="col-lg-2 col-md-4 col-6">
+                    <a href="movies.html?type=fantasy" class="topic-card red">
+                         <h3>fantasy</h3>
+                         <span>Xem chủ đề <i class="bi bi-chevron-right"></i></span>
+                    </a>
+               </div>
+               <div class="col-lg-2 col-md-4 col-6">
+                    <a href="movies.html?type=anime" class="topic-card blue">
+                         <h3>Anime</h3>
+                         <span>Xem chủ đề <i class="bi bi-chevron-right"></i></span>
+                    </a>
+               </div>
+               <div class="col-lg-2 col-md-4 col-6">
+                    <a href="#" class="topic-card purple">
+                         <h3>Cinema</h3>
+                         <span>Xem chủ đề <i class="bi bi-chevron-right"></i></span>
+                    </a>
+               </div>
+               <div class="col-lg-2 col-md-4 col-6">
+                    <a href="movies.html?type=kinhdi" class="topic-card orange">
+                         <h3>Kinh Dị</h3>
+                         <span>Xem chủ đề <i class="bi bi-chevron-right"></i></span>
+                    </a>
+               </div>
+               <div class="col-lg-2 col-md-4 col-6">
+                    <a href="movies.html?type=drama" class="topic-card pink">
+                         <h3>Drama</h3>
+                         <span>Xem chủ đề <i class="bi bi-chevron-right"></i></span>
+                    </a>
+               </div>
+               <div class="col-lg-2 col-md-4 col-6">
+                    <a href="movies.html?type=war" class="topic-card rose">
+                         <h3>War</h3>
+                         <span>Xem chủ đề <i class="bi bi-chevron-right"></i></span>
+                    </a>
+               </div>
+          </div>
+     </div>
+
+     <div class="container-fluid px-3 mt-5">
+          <h5 class="fw-bold text-white mb-3"><span class="textpurple">🎬 Phim nổi bật <a href=""><i class="bi bi-chevron-right"></i></a></span></h5>
+          <div class="carousel-wrapper">
+               <button class="btn-scroll left" onclick="scrollList('movie-list-PhimNoiBat', -1)"><i class="bi bi-chevron-left"></i></button>
+               <div class="movie-carousel">
+                    <div id="movie-list-PhimNoiBat" class="movie-track"></div>
+               </div>
+               <button class="btn-scroll right" onclick="scrollList('movie-list-PhimNoiBat', 1)"><i class="bi bi-chevron-right"></i></button>
+          </div>
+     </div>
+
+     <div class="container-fluid px-3 mt-5">
+          <h5 class="fw-bold text-white mb-3 love-title">
+               <i class="bi bi-heart-fill"></i>
+               <span class="textpink"> Phim ngôn tình <a href=""><i class="bi bi-chevron-right"></i></a></span>
+          </h5>
+          <div class="carousel-wrapper">
+               <button class="btn-scroll left" onclick="scrollList('movie-list-PhimNgonTinh', -1)"><i class="bi bi-chevron-left"></i></button>
+               <div class="movie-carousel">
+                    <div id="movie-list-PhimNgonTinh" class="movie-track"></div>
+               </div>
+               <button class="btn-scroll right" onclick="scrollList('movie-list-PhimNgonTinh', 1)"><i class="bi bi-chevron-right"></i></button>
+          </div>
+     </div> 
+
+     <div class="container-fluid mt-5 px-3">
+          <h5 class="fw-bold text-white mb-3"> <span class="textyl">☄️ ANIME NỔI BẬT <a href=""><i class="bi bi-chevron-right"></i></a></span></h5>
+          <div class="banner-anime">
+               <img id="anime-img" class="anime-img" alt="Anime Banner">
+               <div class="anime-content">
+                    <h1 id="anime-title"></h1>
+                    <p id="anime-desc"></p>
+                    <button class="btn btn-red">Khám phá</button>
+                    <button class="btn btn-outline-light-orange">+ Danh sách</button>
+               </div>
+               <button class="slideanime-btn left" onclick="prevSlide1()"><i class="bi bi-chevron-left"></i></button>
+               <button class="slideanime-btn right" onclick="nextSlide1()"><i class="bi bi-chevron-right"></i></button>
+          </div>
+     </div>
+
+     <div class="container-fluid px-3 mt-5">
+          <h5 class="fw-bold text-white mb-3">
+               <i class="bi bi-fire textred"></i>
+               <span class="textred">phim Hành động <a href=""><i class="bi bi-chevron-right"></i></a></span>
+          </h5>
+          <div class="carousel-wrapper">
+               <button class="btn-scroll left" onclick="scrollList('movie-list-HanhDong', -1)"><i class="bi bi-chevron-left"></i></button>
+               <div class="movie-carousel">
+                    <div id="movie-list-HanhDong" class="movie-track"></div>
+               </div>
+               <button class="btn-scroll right" onclick="scrollList('movie-list-HanhDong', 1)"><i class="bi bi-chevron-right"></i></button>
+          </div>
+     </div>
+
+     <div class="container-fluid px-3 mt-5">
+          <h5 class="fw-bold text-white mb-3">
+               <i class="bi bi-droplet-fill"></i>
+               <span class="textred2">Phim Kinh Dị <a href=""><i class="bi bi-chevron-right"></i></a></span>
+          </h5>
+          <div class="carousel-wrapper">
+               <button class="btn-scroll left" onclick="scrollList('movie-list-kinhdi', -1)"><i class="bi bi-chevron-left"></i></button>
+               <div class="movie-carousel">
+                    <div id="movie-list-kinhdi" class="movie-track"></div>
+               </div>
+               <button class="btn-scroll right" onclick="scrollList('movie-list-kinhdi', 1)"><i class="bi bi-chevron-right"></i></button>
+          </div>
+     </div>
+     
+     <div class="container-fluid px-3 mt-5">
+          <h5 class="fw-bold text-white mb-3">
+               <i class="bi bi-emoji-laughing"></i>
+               <span class="textred3">Phim Hài Kịch <a href=""><i class="bi bi-chevron-right"></i></a></span>
+          </h5>
+          <div class="carousel-wrapper">
+               <button class="btn-scroll left" onclick="scrollList('movie-list-comedy', -1)"><i class="bi bi-chevron-left"></i></button>
+               <div class="movie-carousel">
+                    <div id="movie-list-comedy" class="movie-track"></div>
+               </div>
+               <button class="btn-scroll right" onclick="scrollList('movie-list-comedy', 1)"><i class="bi bi-chevron-right"></i></button>
+          </div>
+     </div>
+
+     <div class="container-fluid px-3 mt-5 mb-5">
+          <h5 class="fw-bold text-white mb-3">
+               <i class="bi bi-rocket-takeoff"></i>
+               <span class="textred3">Phim Viễn Tưởng <a href=""><i class="bi bi-chevron-right"></i></a></span>
+          </h5>
+          <div class="carousel-wrapper">
+               <button class="btn-scroll left" onclick="scrollList('movie-list-sci', -1)"><i class="bi bi-chevron-left"></i></button>
+               <div class="movie-carousel">
+                    <div id="movie-list-sci" class="movie-track"></div>
+               </div>
+               <button class="btn-scroll right" onclick="scrollList('movie-list-sci', 1)"><i class="bi bi-chevron-right"></i></button>
+          </div>
+     </div>
+
+     <footer class="main-footer pt-5 pb-3">
+          <div class="container-fluid px-4">
+               <div class="row g-4">
+                    <div class="col-lg-4 col-md-12">
+                         <a href="#" class="navbar-brand text-white d-flex align-items-center mb-3">
+                              <img src="logo.png" width="80" alt="Logo" class="me-2">
+                              <span class="fs-4 fw-bold">Galaxy<span class="text-purple">Movie</span></span>
+                         </a>
+                         <p class="text-secondary small">
+                              Trải nghiệm không gian điện ảnh không giới hạn cùng Galaxy Movie. Nơi cập nhật liên tục các bộ phim lẻ, phim bộ, anime bom tấn đặc sắc nhất với chất lượng tuyệt hảo.
+                         </p>
+                         <div class="social-icons d-flex gap-3 mt-3">
+                              <a href="#" class="text-secondary fs-5"><i class="bi bi-facebook"></i></a>
+                              <a href="#" class="text-secondary fs-5"><i class="bi bi-instagram"></i></a>
+                              <a href="#" class="text-secondary fs-5"><i class="bi bi-youtube"></i></a>
+                              <a href="#" class="text-secondary fs-5"><i class="bi bi-tiktok"></i></a>
+                         </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6">
+                         <h6 class="fw-bold text-white mb-3">Khám phá</h6>
+                         <ul class="list-unstyled footer-links">
+                              <li><a href="#" class="text-secondary text-decoration-none d-block py-1">Trang chủ</a></li>
+                              <li><a href="#" class="text-secondary text-decoration-none d-block py-1">Phim lẻ</a></li>
+                              <li><a href="#" class="text-secondary text-decoration-none d-block py-1">Phim bộ</a></li>
+                              <li><a href="genre.html" class="text-secondary text-decoration-none d-block py-1">Thể loại</a></li>
+                         </ul>
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6">
+                         <h6 class="fw-bold text-white mb-3">Chính sách</h6>
+                         <ul class="list-unstyled footer-links">
+                              <li><a href="#" class="text-secondary text-decoration-none d-block py-1">Điều khoản sử dụng</a></li>
+                              <li><a href="#" class="text-secondary text-decoration-none d-block py-1">Chính sách bảo mật</a></li>
+                              <li><a href="#" class="text-secondary text-decoration-none d-block py-1">Khiếu nại bản quyền</a></li>
+                              <li><a href="#" class="text-secondary text-decoration-none d-block py-1">Liên hệ hỗ trợ</a></li>
+                         </ul>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-12">
+                         <h6 class="fw-bold text-white mb-3">Nhận thông tin phim mới</h6>
+                         <p class="text-secondary small">Đăng ký để không bỏ lỡ lịch chiếu của các tập phim Hot nhất.</p>
+                         <div class="input-group input-group-sm mt-2">
+                              <input type="email" class="form-control bg-dark border-secondary text-white" placeholder="Email của bạn...">
+                              <button class="btn btn-purple btn-sm" type="button">Đăng ký</button>
+                         </div>
+                    </div>
+               </div>
+
+               <hr class="border-secondary my-4 opacity-25">
+
+               <div class="row">
+                    <div class="col-md-6 text-center text-md-start">
+                         <p class="text-secondary small mb-0">&copy; 2026 GalaxyMovie. All Rights Reserved. Designed by You.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
+                         <span class="text-secondary small">Thỏa thích xem phim - Không lo quảng cáo</span>
+                    </div>
+               </div>
+          </div>
+     </footer>
+
+     <div class="login-container" style="display: none;">
+          <div class="login-box">
+               <button type="button" class="nutdonglogin" onclick="closeLogin()"><i class="bi bi-x-lg"></i></button>
+               <div class="login-banner"></div>
+               <div class="login-form">
+                    <form onsubmit="event.preventDefault(); login();">
+                         <h1>Đăng Nhập</h1>
+                         <label class="form-label" for="email">Email</label>
+                         <input class="form-control" type="email" id="email" required>
+                         <label class="form-label" for="password">Mật khẩu</label>
+                         <input class="form-control" type="password" id="password" required>
+                         <button type="submit" class="btn btn-purple w-100 mt-3">Đăng nhập</button>
+                    </form>
+               </div>
+          </div>
+     </div>
+
+     <div class="register-container" style="display: none;">
+          <div class="login-box">
+               <button type="button" class="nutdonglogin" onclick="closeregister()"><i class="bi bi-x-lg"></i></button>
+               <div class="login-banner"></div>
+               <div class="login-form">
+                    <form onsubmit="event.preventDefault(); register();">
+                         <h1>Đăng Ký</h1>
+                         <label class="form-label" for="name-account">Tên tài khoản</label>
+                         <input class="form-control" type="text" id="name-account" required>
+                         <label class="form-label" for="register-email">Email</label>
+                         <input class="form-control" type="email" id="register-email" required>
+                         <label class="form-label" for="register-password">Mật khẩu</label>
+                         <input class="form-control" type="password" id="register-password" required>
+                         <button type="submit" class="btn btn-purple w-100 mt-3">Đăng ký</button>
+                    </form>
+               </div>
+          </div>
+     </div>
+
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+     <script src="script.js"></script>
+</body>
+</html>
